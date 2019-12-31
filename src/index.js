@@ -2,18 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // component determines location and month
-const App = () => {
-  window.navigator.geolocation.getCurrentPosition(
-    // success callback
-    (position) => console.log(position),
-    (error) => console.log(error)
-    // error callback
-  );
+class App extends React.Component {
+  render() {
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => console.log(position),
+      (error) => console.log(error)
+    );
 
-  return(
-    <div>Hello there!</div>
-  );
-};
+    return <div>Latitude: </div>;
+  }
+}
+
 
 ReactDOM.render(
   <App />, document.querySelector('#root')
