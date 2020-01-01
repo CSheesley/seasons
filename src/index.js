@@ -3,13 +3,26 @@ import ReactDOM from 'react-dom';
 
 // component determines location and month
 class App extends React.Component {
-  render() {
+  constructor (props) {
+    super(props);
+
+    this.state = { lat: null, lng: null };
+
     window.navigator.geolocation.getCurrentPosition(
-      (position) => console.log(position),
+      (position) => {
+        this.setState({ lat: position.coords.latitude, lng: position.coords.longitude })
+      },
       (error) => console.log(error)
     );
+  }
 
-    return <div>Latitude: </div>;
+  render() {
+    return (
+      <div className="coordinates">
+        <div className="latitide">Latitude: { this.state.lat }</div>
+        <div className="longitude">Longitude: { this.state.lng }</div>
+      </div>
+    );
   }
 }
 
