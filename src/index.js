@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay'
 
 // component determines location and month
 class App extends React.Component {
-  constructor (props) {
-    super(props);
-
-    this.state = { lat: null, lng: null, errorMessage: '' };
-  }
+  state = { lat: null, errorMessage: '' };
 
   componentDidMount() {
     // best practice to do data loading here rather than constructor
@@ -19,12 +16,7 @@ class App extends React.Component {
 
   render() {
     if (this.state.lat && this.state.lng && !this.state.errorMessage) {
-      return (
-        <div className="coordinates">
-          <div className="latitide">Latitude: { this.state.lat }</div>
-          <div className="longitude">Longitude: { this.state.lng }</div>
-        </div>
-      )
+      return <SeasonDisplay lat={ this.state.lat } />
     }
 
     if (this.state.errorMessage) {
