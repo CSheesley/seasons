@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SeasonDisplay from './SeasonDisplay'
+import LoadingPage from './LoadingPage'
 
 // component determines location and month
 class App extends React.Component {
@@ -25,7 +26,7 @@ class App extends React.Component {
       )
     }
 
-    return <div className="loading">Loading!</div>
+    return <LoadingPage message="Waiting for User Location Information"/>
   }
 }
 
